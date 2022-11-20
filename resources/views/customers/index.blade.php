@@ -1,43 +1,64 @@
 @extends('customers.layout')
 @section('content')
-    <table class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <td>ID</td>
-                <td>first_name</td>
-                <td>last_name</td>
-                <td>birth_date</td>
-                <td>personal_doc</td>
-                <td>created_at</td>
-                <td>updated_at</td>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($customers as $key => $value)
-            <tr>
-                <td>{{ $value->id }}</td>
-                <td>{{ $value->first_name }}</td>
-                <td>{{ $value->last_name }}</td>
-                <td>{{ $value->birth_date }}</td>
-                <td>{{ $value->personal_doc }}</td>
-                <td>{{ $value->created_at }}</td>
-                <td>{{ $value->updated_at }}</td>
-    
-                <!-- we will also add show, edit, and delete buttons -->
-                <td>
-    
-                    <!-- delete the shark (uses the destroy method DESTROY /sharks/{id} -->
-                    <!-- we will add this later since its a little more complicated than the other two buttons -->
-    
-                    <!-- show the shark (uses the show method found at GET /sharks/{id} -->
-                    <a class="btn btn-small btn-success" href="{{ URL::to('customers/' . $value->id) }}">Show this shark</a>
-    
-                    <!-- edit this shark (uses the edit method found at GET /sharks/{id}/edit -->
-                    <a class="btn btn-small btn-info" href="{{ URL::to('customers/' . $value->id . '/edit') }}">Edit this shark</a>
-    
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row m-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Customers</h2>
+                </div>
+                <div class="card-body">
+                    <a href="{{ URL::to('customers/create') }}" class="btn btn-success btn-sm">Add new customer</a>
+                    
+                    <table class="rounded table table-striped table-dark table-hover mt-2" style="border-radius: 10px">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">first_name</th>
+                                <th scope="col">last_name</th>
+                                <th scope="col">birth_date</th>
+                                <th scope="col">personal_doc</th>
+                                <th scope="col">created_at</th>
+                                <th scope="col">updated_at</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($customers as $key => $value)
+                            <tr class="align-middle">
+                                <th scope="row">{{ $value->id }}</td>
+                                <td>{{ $value->first_name }}</td>
+                                <td>{{ $value->last_name }}</td>
+                                <td>{{ $value->birth_date }}</td>
+                                <td>{{ $value->personal_doc }}</td>
+                                <td>{{ $value->created_at }}</td>
+                                <td>{{ $value->updated_at }}</td>
+                    
+                                <!-- we will also add show, edit, and delete buttons -->
+                                <td>
+                                    <div class="d-flex">
+                                        <a class="m-1 " href="{{ URL::to('customers/' . $value->id) }}">
+                                            <span class="material-symbols-outlined">info</span>
+                                        </a>
+                                        <a class="m-1" href="{{ URL::to('customers/' . $value->id . '/edit') }}">
+                                            <span class="material-symbols-outlined">edit</span>
+                                        </a>
+                                        <form method="POST" action="{{ url('/customers' . '/' . $value->id) }}" accept-charset="UTF-8" style="display: inline">
+                                            {{ method_field('DELETE') }}
+                                            {{ csrf_field() }}
+                                            <button class="btn btn-danger btn-sm" type="submit" title="Delete">
+                                                <span class="material-symbols-outlined">delete</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
