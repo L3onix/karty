@@ -1,0 +1,10 @@
+services:
+  swoole-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "9501:9501"
+    volumes:
+      - ./src:/var/www
+

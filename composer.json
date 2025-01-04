@@ -1,0 +1,16 @@
+{
+    "name": "l3onix/karty",
+    "description": "multi-queue database operation processor",
+    "autoload": {
+        "psr-4": {
+            "L3onix\\Karty\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Leonardo Facundes",
+            "email": "leonardo.fm00@gmail.com"
+        }
+    ],
+    "require": {}
+}
