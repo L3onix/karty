@@ -38,3 +38,4 @@ create table if not exists cart_product_list (
   foreign key(product_id) references product(id),
   foreign key(cart_id) references cart(id)
 )
+
