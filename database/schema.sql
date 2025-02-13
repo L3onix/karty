@@ -11,7 +11,7 @@ create table if not exists product (
   sku varchar(50),
   created_at datetime,
   updated_at datetime
-)
+);
 
 create table if not exists stock (
   id int auto_increment primary key,
@@ -20,7 +20,7 @@ create table if not exists stock (
   created_at datetime,
   updated_at datetime,
   FOREIGN KEY(product_id) REFERENCES product(id)
-)
+);
 
 create table if not exists cart (
   id int auto_increment primary key,
@@ -28,14 +28,14 @@ create table if not exists cart (
   created_at datetime,
   updated_at datetime,
   foreign key(client_id) references client(id)
-)
+);
 
 create table if not exists cart_product_list (
   id int auto_increment primary key,
-  product_id int
+  product_id int,
   amount int,
   cart_id int,
   foreign key(product_id) references product(id),
   foreign key(cart_id) references cart(id)
-)
+);
 

@@ -7,4 +7,18 @@ services:
       - "9501:9501"
     volumes:
       - ./src:/var/www
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: default1
+      MYSQL_USER: developer
+      MYSQL_PASSWORD: default1
+      MYSQL_DATABASE: karty
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database:/docker-entrypoint-initdb.d
 
+volumes:
+  mysql_data:

@@ -1,7 +1,7 @@
 [x] Criar base de projeto swoole
 [x] Criar estrutura base para docker
 [x] Criar arquivo SQL para criar estrutura base de banco de dados
-[] Adicionar banco de dados na estrutura docker
+[x] Adicionar banco de dados na estrutura docker
 [] Implementar rotas básicas do projeto (POST - reservar produto)
 [] Criar ambiente de test com insomnia ou postman (o que for menos chato e capitalista)
 [] Criar microserviço (nome = mario) para receber requisições REST (precisa subtasks)
